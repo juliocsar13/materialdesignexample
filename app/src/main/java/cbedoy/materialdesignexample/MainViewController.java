@@ -11,6 +11,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -22,7 +26,6 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
 
-import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +36,7 @@ import cbedoy.materialdesignexample.services.ImageService;
 import cbedoy.materialdesignexample.services.InjectionManager;
 
 
-public class MainViewController extends Activity implements IViewManager {
+public class MainViewController extends ActionBarActivity implements IViewManager {
 
 
     private HashMap<AbstractViewController.CONTROLLER, AbstractViewController> viewModel;
@@ -42,6 +45,7 @@ public class MainViewController extends Activity implements IViewManager {
     private ViewFlipper viewFlipper;
     private DrawerLayout leftMenuDrawer;
     private ListView leftMenu;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,29 +73,15 @@ public class MainViewController extends Activity implements IViewManager {
         InjectionManager.getInstance().initApp(this);
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            setTranslucentStatus(true);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        SystemBarTintManager tintManager = new SystemBarTintManager(this);
-        tintManager.setStatusBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(R.color.primary_dark);
-
+        leftMenuDrawer.setDrawerShadow(R.drawable.drawer_shadow, Gravity.START);
+        setActionBarIcon(R.drawable.ic_ab_drawer);
     }
-
-    @TargetApi(19)
-    private void setTranslucentStatus(boolean on) {
-        Window win = getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-        if (on) {
-            winParams.flags |= bits;
-        } else {
-            winParams.flags &= ~bits;
-        }
-        win.setAttributes(winParams);
-    }
-
 
 
     @Override
@@ -325,10 +315,25 @@ public class MainViewController extends Activity implements IViewManager {
     }
 
     @Override
+    public void setActionBarIcon(int resource) {
+        toolbar.setNavigationIcon(resource);
+    }
+
+    @Override
     public Activity getActivity() {
         return this;
     }
 
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                leftMenuDrawer.openDrawer(Gravity.START);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 }

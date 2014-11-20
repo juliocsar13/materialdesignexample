@@ -20,6 +20,7 @@ public interface IViewManager
     public void presentLeftMenu();
     public void blockLeftMenu();
     public void presentDetail();
+    public void setActionBarIcon(int resource);
 
 
 }

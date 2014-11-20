@@ -1,13 +1,24 @@
 <resources>
+    <style name="AppTheme" parent="AppTheme.Base"/>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="android:actionBarStyle">@style/MyActionBar</item>
-    </style>
-
-    <!-- ActionBar styles -->
-    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
-        <item name="android:background">@color/primary</item>
+    <style name="AppTheme.Base" parent="Theme.AppCompat">
+        <!--Action bar Color -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--Top status bar color -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--Text color primary -->
+        <item name="android:textColorPrimary">@color/textColorPrimary</item>
+        <!--Background for app -->
+        <item name="android:windowBackground">@color/textColorPrimary</item>
+        <!--Bottom navigation barr -->
+        <item name="android:navigationBarColor">@color/textColorPrimary</item>
+        <!--Left menu action barr -->
+        <item name="colorAccent">@color/windowBackgroundColor</item>
+        <!-- -->
+        <item name="android:windowNoTitle">true</item>
+        <!--Hide default action bar -->
+        <item name="windowActionBar">false</item>
     </style>
 </resources>
+
+

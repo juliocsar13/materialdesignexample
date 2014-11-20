@@ -4,9 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.andexert.library.RippleView;
 
@@ -16,14 +14,16 @@ import java.util.HashMap;
 import cbedoy.materialdesignexample.R;
 
 /**
- * Created by admin on 11/19/14.
+ * Created by admin on 11/20/14.
  */
-public class CategoryCell extends AbstractCell
+public class DetailCell extends AbstractCell
 {
 
-    public CategoryCell(Context context, ArrayList<HashMap<String, Object>> dataModel, LayoutInflater layoutInflater){
+
+    public DetailCell(Context context, LayoutInflater layoutInflater, ArrayList<HashMap<String, Object>> dataModel) {
         super(context, layoutInflater, dataModel);
     }
+
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
@@ -49,6 +49,5 @@ public class CategoryCell extends AbstractCell
         ImageView categoryImage;
         RippleView rippleView;
     }
-
 
 }
