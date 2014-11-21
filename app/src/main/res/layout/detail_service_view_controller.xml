@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="192dp"
+        android:layout_height="180dp"
         android:background="@color/colorPrimary"
         android:id="@+id/relativeLayout">
 
@@ -76,7 +76,7 @@
         fab:fab_colorNormal="@color/primary"
         fab:fab_colorPressed="@color/primary_pressed"
         fab:fab_colorRipple="@color/ripple"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="148dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

@@ -25,9 +25,9 @@
 
     </RelativeLayout>
 
-    <ListView
+    <FrameLayout
         android:id="@+id/left_drawer"
-        android:layout_width="260dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/windowBackgroundColor"/>

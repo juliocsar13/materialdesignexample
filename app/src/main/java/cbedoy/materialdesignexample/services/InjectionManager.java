@@ -8,6 +8,7 @@ import cbedoy.materialdesignexample.MainViewController;
 import cbedoy.materialdesignexample.abstracts.AbstractViewController;
 import cbedoy.materialdesignexample.viewcontroller.CategoryViewController;
 import cbedoy.materialdesignexample.viewcontroller.DetailServiceViewController;
+import cbedoy.materialdesignexample.viewcontroller.LeftMenuViewController;
 
 /**
  * Created by admin on 11/19/14.
@@ -41,6 +42,15 @@ public class InjectionManager
         detailServiceViewController.setTag(AbstractViewController.CONTROLLER.DETAIL_SERVICE);
         detailServiceViewController.setViewManager(mainViewController);
         mainViewController.addViewWithTag(detailServiceViewController, AbstractViewController.CONTROLLER.DETAIL_SERVICE);
+
+
+        LeftMenuViewController leftMenuViewController = new LeftMenuViewController();
+        leftMenuViewController.setAnimation(AbstractViewController.ANIMATION.FADE);
+        leftMenuViewController.setContext(applicationContext);
+        leftMenuViewController.setTag(AbstractViewController.CONTROLLER.LEFT_MENU);
+        leftMenuViewController.setViewManager(mainViewController);
+        mainViewController.setLeftMenuView(leftMenuViewController);
+
 
         categoryViewController.initApp();
 

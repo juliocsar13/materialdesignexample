@@ -27,6 +27,8 @@ import android.widget.ListView;
 import android.widget.ViewFlipper;
 
 
+import com.readystatesoftware.systembartint.SystemBarTintManager;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,7 +46,7 @@ public class MainViewController extends ActionBarActivity implements IViewManage
     private int view_controller_width;
     private ViewFlipper viewFlipper;
     private DrawerLayout leftMenuDrawer;
-    private ListView leftMenu;
+    private FrameLayout leftMenu;
     private Toolbar toolbar;
 
     @Override
@@ -59,7 +61,7 @@ public class MainViewController extends ActionBarActivity implements IViewManage
 
         this.viewFlipper = (ViewFlipper) findViewById(R.id.main_view_controller_view_flipper);
         this.leftMenuDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        this.leftMenu = (ListView) findViewById(R.id.left_drawer);
+        this.leftMenu = (FrameLayout) findViewById(R.id.left_drawer);
 
         TranslateAnimation in = new TranslateAnimation(ImageService.getScreenWidth(), 0, 0, 0);
         in.setDuration(3000);
@@ -78,6 +80,13 @@ public class MainViewController extends ActionBarActivity implements IViewManage
         this.leftMenuDrawer.setDrawerShadow(R.drawable.drawer_shadow, Gravity.START);
         this.toolbar.setNavigationIcon(R.drawable.ic_ab_drawer);
         InjectionManager.getInstance().initApp(this);
+
+
+        SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        tintManager.setStatusBarTintEnabled(true);
+        tintManager.setNavigationBarTintEnabled(true);
+        tintManager.setTintColor(getResources().getColor(R.color.colorPrimary));
+
     }
 
     @Override
