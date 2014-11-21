@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.List;
 
+import cbedoy.materialdesignexample.ApplicationLoader;
 import cbedoy.materialdesignexample.R;
 import cbedoy.materialdesignexample.interfaces.ICellViewDelegate;
 
@@ -59,11 +60,13 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.ViewHolder
     @Override
     public void onBindViewHolder(DetailAdapter.ViewHolder viewHolder, int position) {
         HashMap<String, Object> information = dataModel.get(position);
-        
+
         viewHolder.titleView.setText(information.get("Title").toString());
         viewHolder.messageView.setText(information.get("Value").toString());
-        viewHolder.iconView.setImageResource(Integer.parseInt(information.get("Image").toString()));
+        viewHolder.iconView.setImageResource(Integer.parseInt(information.get("Icon").toString()));
 
+        viewHolder.titleView.setTypeface(ApplicationLoader.regularFont);
+        viewHolder.messageView.setTypeface(ApplicationLoader.regularFont);
 
     }
 

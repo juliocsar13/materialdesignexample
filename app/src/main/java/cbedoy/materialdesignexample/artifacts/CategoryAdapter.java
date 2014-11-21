@@ -55,7 +55,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public void onBindViewHolder(CategoryAdapter.ViewHolder viewHolder, int position) {
 
         HashMap<String, Object> hashMap = dataModel.get(position);
-        viewHolder.categoryImage.setImageResource(position == 0 ? R.drawable.category_one : R.drawable.category_two);
+        viewHolder.categoryImage.setImageResource(position == 0 ? R.drawable.category_one : position == 1 ? R.drawable.category_two :position == 2 ? R.drawable.category_three : R.drawable.category_four);
         viewHolder.categoryImage.setId(position);
         viewHolder.categoryImage.setOnClickListener(this);
         viewHolder.categoryImage.setTag(hashMap);

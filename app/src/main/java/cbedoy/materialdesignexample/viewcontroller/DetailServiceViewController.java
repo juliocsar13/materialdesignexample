@@ -6,12 +6,17 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.melnykov.fab.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
+import java.util.Random;
 
+import cbedoy.materialdesignexample.ApplicationLoader;
 import cbedoy.materialdesignexample.R;
 import cbedoy.materialdesignexample.abstracts.AbstractViewController;
 import cbedoy.materialdesignexample.artifacts.DetailAdapter;
@@ -28,12 +33,15 @@ public class DetailServiceViewController  extends AbstractViewController impleme
     private DetailAdapter detailAdapter;
     private RecyclerView.LayoutManager layoutAdapter;
     private ArrayList<HashMap<String, Object>> dataModel;
+    private RelativeLayout relativeLayout;
+    private Random random;
 
     @Override
     protected View init() {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.detail_service_view_controller,  null);
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fab);
+        relativeLayout = (RelativeLayout) view.findViewById(R.id.relativeLayout);
         floatingActionButton.setColorNormal(Color.parseColor("#4CAF50"));
         floatingActionButton.setColorPressed(Color.parseColor("#388E3C"));
 
@@ -87,13 +95,47 @@ public class DetailServiceViewController  extends AbstractViewController impleme
         detailRecyclerView.setAdapter(detailAdapter);
 
 
+        informationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reloadColorView();
+            }
+        });
+
+        random = new Random();
+
+
+
+
         return view;
+    }
+
+    private void reloadColorView()
+    {
+        int randomNumber = this.random.nextInt(3);
+
+        viewManager.getToolbar().setTitle("Service name");
+        int randomColor =                           randomNumber == 0 ? context.getResources().getColor(R.color.random_1_color_primary):
+                                                    randomNumber == 1 ? context.getResources().getColor(R.color.random_2_color_primary):
+                                                    randomNumber == 2 ? context.getResources().getColor(R.color.random_3_color_primary):
+                                                                        context.getResources().getColor(R.color.random_4_color_primary);
+        viewManager.getToolbar().setBackgroundColor(randomColor);
+        relativeLayout.setBackgroundColor(randomColor);
+
+        String format = "$.2f pesos";
+
+        int i = random.nextInt(99999);
+        float amount = 9999 * i;
+
+        ((TextView)view.findViewById(R.id.textView)).setTypeface(ApplicationLoader.regularFont);
+        ((TextView)view.findViewById(R.id.textView)).setText(String.format(Locale.US, format, amount));
     }
 
     @Override
     public void reload() {
         viewManager.getToolbar().setNavigationIcon(R.drawable.ic_ab_drawer);
         viewManager.getToolbar().setTitle("Service name");
+        relativeLayout.setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
     }
 
 

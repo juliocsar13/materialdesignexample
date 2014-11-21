@@ -55,6 +55,7 @@ public class CategoryViewController extends AbstractViewController implements IC
     @Override
     public void reload() {
         viewManager.getToolbar().setNavigationIcon(R.drawable.ic_ab_drawer);
+        viewManager.getToolbar().setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
     }
 
     public void initApp(){
