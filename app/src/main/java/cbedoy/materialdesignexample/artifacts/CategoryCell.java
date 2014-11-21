@@ -21,7 +21,7 @@ import cbedoy.materialdesignexample.R;
 public class CategoryCell extends AbstractCell
 {
 
-    public CategoryCell(Context context, ArrayList<HashMap<String, Object>> dataModel, LayoutInflater layoutInflater){
+    public CategoryCell(Context context, ArrayList<Integer> dataModel, LayoutInflater layoutInflater){
         super(context, layoutInflater, dataModel);
     }
 

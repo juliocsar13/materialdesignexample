@@ -1,6 +1,7 @@
 package cbedoy.materialdesignexample.interfaces;
 
 import android.app.Activity;
+import android.support.v7.widget.Toolbar;
 
 import cbedoy.materialdesignexample.abstracts.AbstractViewController;
 
@@ -20,7 +21,7 @@ public interface IViewManager
     public void presentLeftMenu();
     public void blockLeftMenu();
     public void presentDetail();
-    public void setActionBarIcon(int resource);
-
+    public Toolbar getToolbar();
+    public void disableLeftMenu();
 
 }

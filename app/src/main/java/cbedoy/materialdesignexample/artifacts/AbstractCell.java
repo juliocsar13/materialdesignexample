@@ -17,10 +17,10 @@ public abstract class AbstractCell extends BaseAdapter
 {
     protected Context context;
     protected LayoutInflater layoutInflater;
-    protected ArrayList<HashMap<String, Object>>dataModel;
+    protected ArrayList<Integer>dataModel;
     protected ICellViewDelegate viewDelegate;
 
-    public AbstractCell(Context context, LayoutInflater layoutInflater, ArrayList<HashMap<String, Object>> dataModel){
+    public AbstractCell(Context context, LayoutInflater layoutInflater, ArrayList<Integer> dataModel){
         this.dataModel = dataModel;
         this.context = context;
         this.layoutInflater = layoutInflater;

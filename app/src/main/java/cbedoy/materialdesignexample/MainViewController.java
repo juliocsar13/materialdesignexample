@@ -69,20 +69,16 @@ public class MainViewController extends ActionBarActivity implements IViewManage
         out.setDuration(3000);
         out.setZAdjustment(Animation.ZORDER_TOP);
         this.viewFlipper.setOutAnimation(out);
-
-        InjectionManager.getInstance().initApp(this);
-
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        if (toolbar != null) {
-            setSupportActionBar(toolbar);
+        this.toolbar = (Toolbar) findViewById(R.id.toolbar);
+        if (this.toolbar != null) {
+            setSupportActionBar(this.toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        leftMenuDrawer.setDrawerShadow(R.drawable.drawer_shadow, Gravity.START);
-        setActionBarIcon(R.drawable.ic_ab_drawer);
+        this.leftMenuDrawer.setDrawerShadow(R.drawable.drawer_shadow, Gravity.START);
+        this.toolbar.setNavigationIcon(R.drawable.ic_ab_drawer);
+        InjectionManager.getInstance().initApp(this);
     }
-
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -315,8 +311,14 @@ public class MainViewController extends ActionBarActivity implements IViewManage
     }
 
     @Override
-    public void setActionBarIcon(int resource) {
-        toolbar.setNavigationIcon(resource);
+    public Toolbar getToolbar() {
+        return toolbar;
+    }
+
+
+    @Override
+    public void disableLeftMenu() {
+        leftMenuDrawer.setVisibility(View.GONE);
     }
 
     @Override

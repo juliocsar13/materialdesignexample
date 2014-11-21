@@ -6,12 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <!--Top status bar color -->
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <!--Text color primary -->
-        <item name="android:textColorPrimary">@color/textColorPrimary</item>
         <!--Background for app -->
         <item name="android:windowBackground">@color/textColorPrimary</item>
-        <!--Bottom navigation barr -->
-        <item name="android:navigationBarColor">@color/textColorPrimary</item>
         <!--Left menu action barr -->
         <item name="colorAccent">@color/windowBackgroundColor</item>
         <!-- -->

@@ -49,7 +49,7 @@ public class CategoryViewController extends AbstractViewController implements Ca
 
     @Override
     public void reload() {
-
+        viewManager.getToolbar().setNavigationIcon(R.drawable.ic_ab_drawer);
     }
 
     public void initApp(){
