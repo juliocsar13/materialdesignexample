@@ -1,49 +1,54 @@
 package cbedoy.materialdesignexample.viewcontroller;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import cbedoy.materialdesignexample.R;
 import cbedoy.materialdesignexample.abstracts.AbstractViewController;
-import cbedoy.materialdesignexample.artifacts.CategoryCell;
+import cbedoy.materialdesignexample.artifacts.CategoryAdapter;
+import cbedoy.materialdesignexample.interfaces.ICellViewDelegate;
+
 
 /**
  * Created by admin on 11/19/14.
  */
-public class CategoryViewController extends AbstractViewController implements CategoryCell.ICellViewDelegate
+public class CategoryViewController extends AbstractViewController implements ICellViewDelegate
 {
 
-    private ListView categoryList;
-    private CategoryCell categoryCell;
+    private RecyclerView catogoryRecyclerView;
+    private CategoryAdapter categoryAdapter;
+    private RecyclerView.LayoutManager layoutAdapter;
+    private List<HashMap<String, Object>> dataModel;
+
+
     @Override
     protected View init() {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.category_view_controller,  null);
-        categoryList = (ListView) view.findViewById(R.id.list_view);
-        categoryList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                viewManager.presentViewForTag(CONTROLLER.SERVICE_LIST);
-            }
-        });
 
-        ArrayList<Integer> list = new ArrayList<Integer>();
-        list.add(0); list.add(1); list.add(3); list.add(4);
+        catogoryRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
+        layoutAdapter = new LinearLayoutManager(viewManager.getActivity());
+        dataModel = new ArrayList<HashMap<String, Object>>();
+        catogoryRecyclerView.setHasFixedSize(true);
+        catogoryRecyclerView.setLayoutManager(layoutAdapter);
 
-        categoryCell = new CategoryCell(context, list, inflater);
-        categoryCell.setViewDelegate(this);
+        HashMap<String, Object> data = new HashMap<String, Object>();
+        dataModel.add(data);
+        dataModel.add(data);
+        dataModel.add(data);
+        dataModel.add(data);
 
-
-        categoryList.setAdapter(categoryCell);
-        categoryCell.notifyDataSetChanged();
-
-
+        categoryAdapter = new CategoryAdapter(dataModel);
+        categoryAdapter.setViewDelegate(this);
+        catogoryRecyclerView.setAdapter(categoryAdapter);
         return view;
     }
 

@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ripple="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/windowBackgroundColor"
-    android:orientation="vertical">
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:layout_margin="6dp"
+    android:id="@+id/card_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="1dp">
 
-    <com.andexert.library.RippleView
-        android:id="@+id/more"
+    <RelativeLayout
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_toLeftOf="@+id/more2"
-        ripple:rv_centered="true">
+        android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:src="@drawable/category_four"
             android:layout_width="match_parent"
-            android:layout_height="192dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="6dp"
-            android:layout_marginTop="3dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/category_one" />
+            android:layout_height="180dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/image"/>
 
-    </com.andexert.library.RippleView>
-</LinearLayout>
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
