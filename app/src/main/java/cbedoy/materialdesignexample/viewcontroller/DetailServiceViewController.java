@@ -29,18 +29,21 @@ public class DetailServiceViewController  extends AbstractViewController impleme
 {
     private FloatingActionButton floatingActionButton;
     private FloatingActionButton informationButton;
+    private FloatingActionButton favoriteButton;
     private RecyclerView detailRecyclerView;
     private DetailAdapter detailAdapter;
     private RecyclerView.LayoutManager layoutAdapter;
     private ArrayList<HashMap<String, Object>> dataModel;
     private RelativeLayout relativeLayout;
     private Random random;
+    private boolean isFavorite=true;
 
     @Override
     protected View init() {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.detail_service_view_controller,  null);
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.fab);
+
         relativeLayout = (RelativeLayout) view.findViewById(R.id.relativeLayout);
         floatingActionButton.setColorNormal(Color.parseColor("#4CAF50"));
         floatingActionButton.setColorPressed(Color.parseColor("#388E3C"));
@@ -48,6 +51,19 @@ public class DetailServiceViewController  extends AbstractViewController impleme
         informationButton = (FloatingActionButton) view.findViewById(R.id.info);
         informationButton.setColorNormal(Color.parseColor("#FAFAFA"));
         informationButton.setColorPressed(Color.parseColor("#EEEEEE"));
+
+        favoriteButton = (FloatingActionButton) view.findViewById(R.id.fav);
+        favoriteButton.setColorNormal(Color.parseColor("#FAFAFA"));
+        favoriteButton.setColorPressed(Color.parseColor("#EEEEEE"));
+
+
+        favoriteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                favoriteButton.setImageResource(isFavorite ? R.drawable.ic_fav : R.drawable.ic_non_fav );
+                isFavorite =!isFavorite;
+            }
+        });
 
         detailRecyclerView = (RecyclerView) view.findViewById(R.id.list_view);
         floatingActionButton.attachToRecyclerView(detailRecyclerView);
